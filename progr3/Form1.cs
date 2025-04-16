@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace progr3
 {
@@ -18,7 +17,6 @@ namespace progr3
         private List<string> numericConstants = new List<string>();
         private List<string> identifiers = new List<string>();
 
-      
         private readonly HashSet<string> csharpKeywords = new HashSet<string>
         {
             "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
@@ -65,7 +63,7 @@ namespace progr3
             currentPosition = 0;
 
             if (string.IsNullOrEmpty(inputText)) return;
-        
+
             inputText += "\uFFFF";
             int type = 0;
             while (StepLexAnalyze(ref type) > 0) { }
@@ -190,7 +188,6 @@ namespace progr3
                         if (c == '=' || c == '+' || c == '-' || c == '*' || c == '/' ||
                             c == '%' || c == '<' || c == '>' || c == '!' || c == '&' || c == '|')
                         {
-                            
                             char nextChar = GetInputChar();
                             if ((c == ':' && nextChar == '=') ||
                                 (c == '<' && nextChar == '=') ||
@@ -288,6 +285,6 @@ namespace progr3
             }
         }
 
-        private enum State { S, cm, id, ss, cf, st, dp, fin }
+        private enum State { S, cm, id, ss, cf, st }
     }
 }
